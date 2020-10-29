@@ -28,7 +28,7 @@ logo = GREEN+r"""
 os.system("cls || clear")
 
 print(logo)
-arquivo = input("informe o nome ou diretório do arquivo: ")
+arquivo = input("enter the file name or directory: ")
 server = 'https://apiv2.gofile.io/getServer'
 s = requests.get(server)
 resp = json.loads(s.text)
@@ -38,7 +38,7 @@ url = 'https://'+dados_servidor+'.gofile.io/uploadFile'
 try:
    files = {'file': open(arquivo, 'rb')}
 except:
-  print(RED+"Esse arquivo não existe.")
+  print(RED+"This file doesnt exist.")
   exit(0)
 
 print("Uploading on "+dados_servidor+" server...")
@@ -57,4 +57,4 @@ try:
     exit(0)
 
 except(EnvironmentError):
-    print(RED+"Ocorreu um erro no upload e não conseguimos enviar o arquivo.\n\n" + EnvironmentError)
+    print(RED+"Error: \n\n"+ENDC+ EnvironmentError)
