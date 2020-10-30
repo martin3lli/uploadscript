@@ -42,8 +42,9 @@ except:
   exit(0)
 
 print("Uploading on "+dados_servidor+" server...")
+start = time.time()
 try:
-  
+
     r = requests.post(url, files=files)
     resposta = json.loads(r.text)
     dados_code = resposta.get('data')['code']
@@ -51,9 +52,12 @@ try:
     dados_tamanho = str(dtamanho) 
     os.system("cls || clear")
     print(logo)
+    end = time.time()
+    elapsed = end - start
     print(BLUE+"Size: "+YELLOW+dados_tamanho+"bytes"+BLUE)
     print("Link: "+YELLOW+"https://gofile.io/d/"+dados_code+BLUE+"\nLink copied to your clipboard."+ENDC) 
     pyperclip.copy("https://gofile.io/d/"+dados_code)
+    print(BOLD+f"\nElapsed: {elapsed:.2f} seconds"+ENDC)
     exit(0)
 
 except(EnvironmentError):
