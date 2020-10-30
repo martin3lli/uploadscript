@@ -5,6 +5,8 @@ import os
 import json
 import time
 import pyperclip
+from hurry.filesize import size
+
 
 WHITE = '\033[0m' 
 RED = '\033[1;31m'
@@ -49,12 +51,13 @@ try:
     resposta = json.loads(r.text)
     dados_code = resposta.get('data')['code']
     dtamanho = resposta.get('data')['file']['size']
-    dados_tamanho = str(dtamanho) 
+    a = size(dtamanho)
+    dados_tamanho = str(a) 
     os.system("cls || clear")
     print(logo)
     end = time.time()
     elapsed = end - start
-    print(BLUE+"Size: "+YELLOW+dados_tamanho+"bytes"+BLUE)
+    print(BLUE+"Size: "+YELLOW+a+BLUE)
     print("Link: "+YELLOW+"https://gofile.io/d/"+dados_code+BLUE+"\nLink copied to your clipboard."+ENDC) 
     pyperclip.copy("https://gofile.io/d/"+dados_code)
     print(BOLD+f"\nElapsed: {elapsed:.2f} seconds"+ENDC)
