@@ -31,7 +31,9 @@ os.system("cls || clear")
 
 print(logo)
 arquivox = input("enter the file name or directory: ")
-arquivo = arquivox.replace("'", "")
+arq = arquivox.replace("'", "")
+arquivo = arq.replace(" ", "")
+
 server = 'https://apiv2.gofile.io/getServer'
 s = requests.get(server)
 resp = json.loads(s.text)
